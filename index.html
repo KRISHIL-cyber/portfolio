@@ -3,383 +3,109 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Krishil Patel — Software Engineer</title>
+  <title>Krishil Patel - Software Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --bg: #F5F2ED;
-      --ink: #1A1714;
-      --muted: #7A7068;
-      --accent: #C84B2F;
-      --accent2: #2F6BC8;
-      --line: #D9D3CB;
-      --card: #ECEAE4;
+      --bg: #F5F2ED; --ink: #1A1714; --muted: #7A7068;
+      --accent: #C84B2F; --line: #D9D3CB; --card: #ECEAE4;
     }
-
     html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--ink); font-family: 'DM Sans', sans-serif; font-weight: 300; line-height: 1.6; overflow-x: hidden; }
 
-    body {
-      background: var(--bg);
-      color: var(--ink);
-      font-family: 'DM Sans', sans-serif;
-      font-weight: 300;
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* ── NAV ── */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      display: flex; justify-content: space-between; align-items: center;
-      padding: 1.2rem 4rem;
-      background: rgba(245,242,237,0.85);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid var(--line);
-    }
-    .nav-logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      letter-spacing: 0.01em;
-      color: var(--ink);
-      text-decoration: none;
-    }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: rgba(245,242,237,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+    .nav-logo { font-family: 'DM Serif Display', serif; font-size: 1.25rem; color: var(--ink); text-decoration: none; }
     .nav-links { display: flex; gap: 2.5rem; list-style: none; }
-    .nav-links a {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .nav-links a { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .nav-links a:hover { color: var(--accent); }
 
-    /* ── HERO ── */
-    #hero {
-      min-height: 100vh;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      padding: 0 4rem;
-      padding-top: 80px;
-      align-items: center;
-      gap: 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-    #hero::before {
-      content: '';
-      position: absolute;
-      top: -10%; right: -5%;
-      width: 55vw; height: 110vh;
-      background: radial-gradient(ellipse at 70% 40%, rgba(200,75,47,0.06) 0%, transparent 70%),
-                  radial-gradient(ellipse at 30% 80%, rgba(47,107,200,0.05) 0%, transparent 60%);
-      pointer-events: none;
-    }
+    #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; padding: 0 4rem; padding-top: 80px; align-items: center; gap: 4rem; position: relative; overflow: hidden; }
+    #hero::before { content: ''; position: absolute; top: -10%; right: -5%; width: 55vw; height: 110vh; background: radial-gradient(ellipse at 70% 40%, rgba(200,75,47,0.06) 0%, transparent 70%); pointer-events: none; }
     .hero-text { position: relative; }
-    .hero-tag {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      opacity: 0; animation: fadeUp 0.6s 0.2s forwards;
-    }
-    h1 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(3rem, 5vw, 5rem);
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      margin-bottom: 1.5rem;
-      opacity: 0; animation: fadeUp 0.6s 0.35s forwards;
-    }
-    h1 em {
-      font-style: italic;
-      color: var(--accent);
-    }
-    .hero-desc {
-      font-size: 1rem;
-      color: var(--muted);
-      max-width: 44ch;
-      margin-bottom: 2.5rem;
-      opacity: 0; animation: fadeUp 0.6s 0.5s forwards;
-    }
-    .hero-cta {
-      display: flex; gap: 1rem; flex-wrap: wrap;
-      opacity: 0; animation: fadeUp 0.6s 0.65s forwards;
-    }
-    .btn {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      padding: 0.75rem 1.75rem;
-      font-family: 'DM Mono', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      text-decoration: none;
-      border: 1.5px solid var(--ink);
-      color: var(--ink);
-      transition: all 0.22s;
-    }
+    .hero-tag { font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s 0.2s forwards; }
+    h1 { font-family: 'DM Serif Display', serif; font-size: clamp(3rem, 5vw, 5rem); line-height: 1.08; letter-spacing: -0.02em; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.6s 0.35s forwards; }
+    h1 em { font-style: italic; color: var(--accent); }
+    .hero-desc { font-size: 1rem; color: var(--muted); max-width: 44ch; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 0.6s 0.5s forwards; }
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; opacity: 0; animation: fadeUp 0.6s 0.65s forwards; }
+    .btn { display: inline-flex; align-items: center; padding: 0.75rem 1.75rem; font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--ink); color: var(--ink); transition: all 0.22s; }
     .btn-fill { background: var(--ink); color: var(--bg); }
     .btn:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
-    .hero-right {
-      position: relative;
-      opacity: 0; animation: fadeIn 0.8s 0.4s forwards;
-    }
-    .hero-card {
-      background: var(--card);
-      border: 1px solid var(--line);
-      padding: 2.5rem;
-    }
-    .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
-    .stat { border-left: 2px solid var(--accent); padding-left: 1rem; }
-    .stat-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.5rem;
-      line-height: 1;
-      color: var(--ink);
-    }
-    .stat-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-top: 0.25rem;
-    }
-    .cert-badge {
-      margin-top: 2rem;
-      padding: 1rem 1.25rem;
-      background: var(--bg);
-      border: 1px solid var(--line);
-      display: flex; align-items: center; gap: 0.75rem;
-    }
-    .cert-icon { font-size: 1.4rem; }
-    .cert-text { font-size: 0.78rem; color: var(--muted); line-height: 1.4; }
-    .cert-text strong { color: var(--ink); font-weight: 500; display: block; }
+    .hero-right { opacity: 0; animation: fadeIn 0.8s 0.4s forwards; }
 
-    /* ── SECTIONS ── */
+    .terminal { background: #1A1714; border: 1px solid #333; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.18); }
+    .terminal-bar { background: #2a2724; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.4rem; border-bottom: 1px solid #333; }
+    .t-dot { width: 12px; height: 12px; border-radius: 50%; display: inline-block; }
+    .t-title { font-family: 'DM Mono', monospace; font-size: 0.7rem; color: #666; margin-left: 0.5rem; }
+    .terminal-body { padding: 1.5rem; min-height: 280px; font-family: 'DM Mono', monospace; font-size: 0.78rem; line-height: 1.9; overflow: hidden; }
+    .t-line { display: flex; align-items: center; }
+    .t-prompt { color: #28c840; }
+    .t-cmd { color: #fff; }
+    .t-out { color: #888; padding-left: 1rem; display: block; }
+    .t-out.accent { color: #C84B2F; }
+    .t-out.blue { color: #61afef; }
+    .t-out.yellow { color: #febc2e; }
+    .t-cursor { display: inline-block; width: 7px; height: 15px; background: #28c840; animation: blink 1s step-end infinite; vertical-align: middle; margin-left: 3px; border-radius: 1px; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
     section { padding: 6rem 4rem; }
-    .section-header {
-      display: flex; align-items: baseline; gap: 1.5rem;
-      margin-bottom: 3.5rem;
-    }
-    .section-num {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      color: var(--accent);
-    }
-    h2 {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
+    .section-header { display: flex; align-items: baseline; gap: 1.5rem; margin-bottom: 3.5rem; }
+    .section-num { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.15em; color: var(--accent); }
+    h2 { font-family: 'DM Serif Display', serif; font-size: clamp(2rem, 3.5vw, 3rem); letter-spacing: -0.02em; line-height: 1.1; }
     .divider { flex: 1; height: 1px; background: var(--line); }
 
-    /* ── ABOUT ── */
     #about { background: var(--card); }
     .about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
     .about-text p { color: var(--muted); margin-bottom: 1rem; font-size: 0.95rem; }
-    .about-text p:last-child { margin-bottom: 0; }
     .contact-list { margin-top: 2rem; display: flex; flex-direction: column; gap: 0.6rem; }
-    .contact-item {
-      display: flex; align-items: center; gap: 0.75rem;
-      font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted);
-      text-decoration: none; transition: color 0.2s;
-    }
+    .contact-item { display: flex; align-items: center; gap: 0.75rem; font-family: 'DM Mono', monospace; font-size: 0.75rem; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .contact-item:hover { color: var(--accent); }
     .contact-item span { color: var(--accent); }
-    .skills-block {}
     .skill-category { margin-bottom: 1.75rem; }
-    .skill-cat-label {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 0.75rem;
-    }
+    .skill-cat-label { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.75rem; }
     .skill-pills { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-    .pill {
-      padding: 0.3rem 0.75rem;
-      border: 1px solid var(--line);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.7rem;
-      color: var(--ink);
-      background: var(--bg);
-      transition: all 0.2s;
-    }
+    .pill { padding: 0.3rem 0.75rem; border: 1px solid var(--line); font-family: 'DM Mono', monospace; font-size: 0.7rem; color: var(--ink); background: var(--bg); transition: all 0.2s; }
     .pill:hover { border-color: var(--accent); color: var(--accent); }
 
-    /* ── EXPERIENCE ── */
-    #experience {}
-    .exp-list { display: flex; flex-direction: column; gap: 0; }
-    .exp-item {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      gap: 3rem;
-      padding: 2.5rem 0;
-      border-bottom: 1px solid var(--line);
-      opacity: 1;
-      transform: translateY(0);
-      transition: opacity 0.5s, transform 0.5s;
-    }
-    .exp-meta {}
-    .exp-period {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.08em;
-      color: var(--accent);
-      margin-bottom: 0.4rem;
-    }
-    .exp-company {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      margin-bottom: 0.2rem;
-    }
-    .exp-location {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-    .exp-content {}
-    .exp-role {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.8rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
-    .exp-bullets li {
-      font-size: 0.88rem;
-      color: var(--muted);
-      padding-left: 1.2rem;
-      position: relative;
-    }
-    .exp-bullets li::before {
-      content: '→';
-      position: absolute; left: 0;
-      color: var(--accent);
-      font-size: 0.8rem;
-    }
+    .exp-list { display: flex; flex-direction: column; }
+    .exp-item { display: grid; grid-template-columns: 200px 1fr; gap: 3rem; padding: 2.5rem 0; border-bottom: 1px solid var(--line); }
+    .exp-period { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.4rem; }
+    .exp-company { font-family: 'DM Serif Display', serif; font-size: 1.1rem; margin-bottom: 0.2rem; }
+    .exp-location { font-size: 0.78rem; color: var(--muted); }
+    .exp-role { font-family: 'DM Mono', monospace; font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-bottom: 1rem; }
     .exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.25rem; }
-    .tag {
-      padding: 0.2rem 0.6rem;
-      background: var(--card);
-      border: 1px solid var(--line);
-      font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      color: var(--muted);
-    }
+    .tag { padding: 0.2rem 0.6rem; background: var(--card); border: 1px solid var(--line); font-family: 'DM Mono', monospace; font-size: 0.65rem; color: var(--muted); }
 
-    /* ── PROJECTS ── */
     #projects { background: var(--card); }
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-      gap: 1.5rem;
-    }
-    .project-card {
-      background: var(--bg);
-      border: 1px solid var(--line);
-      padding: 2rem;
-      opacity: 1;
-      transform: translateY(0);
-      transition: border-color 0.22s;
-    }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; }
+    .project-card { background: var(--bg); border: 1px solid var(--line); padding: 2rem; transition: border-color 0.22s; }
     .project-card:hover { border-color: var(--accent); }
-    .project-index {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2.5rem;
-      color: var(--line);
-      line-height: 1;
-      margin-bottom: 1rem;
-    }
-    .project-title {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.25rem;
-      margin-bottom: 0.75rem;
-    }
-    .project-desc {
-      font-size: 0.85rem;
-      color: var(--muted);
-      margin-bottom: 1.25rem;
-      line-height: 1.65;
-    }
+    .project-index { font-family: 'DM Serif Display', serif; font-size: 2.5rem; color: var(--line); line-height: 1; margin-bottom: 1rem; }
+    .project-title { font-family: 'DM Serif Display', serif; font-size: 1.25rem; margin-bottom: 0.75rem; }
+    .project-desc { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.25rem; line-height: 1.65; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
-    /* ── EDUCATION & ACHIEVEMENTS ── */
-    #education {}
     .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    .edu-card {
-      border: 1px solid var(--line);
-      padding: 2rem;
-      background: var(--card);
-    }
-    .edu-degree {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.5rem;
-      margin-bottom: 0.4rem;
-    }
+    .edu-card { border: 1px solid var(--line); padding: 2rem; background: var(--card); }
+    .edu-degree { font-family: 'DM Serif Display', serif; font-size: 1.5rem; margin-bottom: 0.4rem; }
     .edu-uni { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.25rem; }
-    .edu-meta {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      color: var(--accent);
-      letter-spacing: 0.1em;
-      margin-bottom: 1.25rem;
-    }
+    .edu-meta { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: var(--accent); letter-spacing: 0.1em; margin-bottom: 1.25rem; }
     .edu-courses { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
     .achievements-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-    .achievement-item {
-      display: flex; gap: 1rem; align-items: flex-start;
-      padding: 1.25rem 1.5rem;
-      border: 1px solid var(--line);
-      background: var(--card);
-    }
-    .ach-icon { color: var(--accent); font-size: 1rem; margin-top: 0.1rem; flex-shrink: 0; }
+    .achievement-item { display: flex; gap: 1rem; align-items: flex-start; padding: 1.25rem 1.5rem; border: 1px solid var(--line); background: var(--card); }
+    .ach-icon { font-size: 1rem; margin-top: 0.1rem; flex-shrink: 0; }
     .ach-text { font-size: 0.88rem; color: var(--muted); }
 
-    /* ── FOOTER ── */
-    footer {
-      padding: 3rem 4rem;
-      border-top: 1px solid var(--line);
-      display: flex; justify-content: space-between; align-items: center;
-    }
-    .footer-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-    }
+    footer { padding: 3rem 4rem; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; }
+    .footer-name { font-family: 'DM Serif Display', serif; font-size: 1.1rem; }
     .footer-links { display: flex; gap: 2rem; }
-    .footer-links a {
-      font-family: 'DM Mono', monospace;
-      font-size: 0.68rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--muted);
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .footer-links a { font-family: 'DM Mono', monospace; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.2s; }
     .footer-links a:hover { color: var(--accent); }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-    /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
       .nav-links { gap: 1.5rem; }
@@ -394,7 +120,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a href="#hero" class="nav-logo">KP</a>
   <ul class="nav-links">
@@ -405,7 +130,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-text">
     <p class="hero-tag">Available for new opportunities</p>
@@ -417,37 +141,18 @@
     </div>
   </div>
   <div class="hero-right">
-    <div class="hero-card">
-      <div class="stat-grid">
-        <div class="stat">
-          <div class="stat-num">3</div>
-          <div class="stat-label">Years Experience</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">85%</div>
-          <div class="stat-label">API Perf. Gain</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">100K</div>
-          <div class="stat-label">Concurrent Reqs</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">28</div>
-          <div class="stat-label">Languages IVR</div>
-        </div>
+    <div class="terminal">
+      <div class="terminal-bar">
+        <span class="t-dot" style="background:#ff5f57"></span>
+        <span class="t-dot" style="background:#febc2e"></span>
+        <span class="t-dot" style="background:#28c840"></span>
+        <span class="t-title">krishil@portfolio ~</span>
       </div>
-      <div class="cert-badge">
-        <span class="cert-icon">🏅</span>
-        <div class="cert-text">
-          <strong>Microsoft Certified</strong>
-          Azure AI Engineer Associate (AI-102)
-        </div>
-      </div>
+      <div class="terminal-body" id="tb"></div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="section-header">
     <span class="section-num">01</span>
@@ -460,41 +165,35 @@
       <p>My work spans API optimisation, microservices architecture, cloud-native AWS infrastructure, and full-stack contributions using Angular. I take pride in clean, maintainable code and cross-functional collaboration in agile teams.</p>
       <p>Outside of work I'm passionate about automation and building side projects that push the boundaries of what's possible with AI and cloud tools.</p>
       <div class="contact-list">
-        <a href="mailto:krishil0005@gmail.com" class="contact-item"><span>✉</span> krishil0005@gmail.com</a>
-        <a href="tel:8469379955" class="contact-item"><span>✆</span> +91 84693 79955</a>
+        <a href="mailto:krishil0005@gmail.com" class="contact-item"><span>&#9993;</span> krishil0005@gmail.com</a>
+        <a href="tel:+918469379955" class="contact-item"><span>&#9990;</span> +91 84693 79955</a>
         <a href="https://linkedin.com/in/krishil-patel" target="_blank" class="contact-item"><span>in</span> linkedin.com/in/krishil-patel</a>
-        <a href="https://github.com/KRISHIL-cyber" target="_blank" class="contact-item"><span>⌥</span> github.com/KRISHIL-cyber</a>
+        <a href="https://github.com/KRISHIL-cyber" target="_blank" class="contact-item"><span>gh</span> github.com/KRISHIL-cyber</a>
       </div>
     </div>
-    <div class="skills-block">
+    <div>
       <div class="skill-category">
         <div class="skill-cat-label">Languages</div>
         <div class="skill-pills">
-          <span class="pill">C#</span><span class="pill">TypeScript</span><span class="pill">JavaScript</span>
-          <span class="pill">Python</span><span class="pill">SQL</span><span class="pill">R</span>
+          <span class="pill">C#</span><span class="pill">TypeScript</span><span class="pill">JavaScript</span><span class="pill">Python</span><span class="pill">SQL</span><span class="pill">R</span>
         </div>
       </div>
       <div class="skill-category">
-        <div class="skill-cat-label">Backend & Frameworks</div>
+        <div class="skill-cat-label">Backend &amp; Frameworks</div>
         <div class="skill-pills">
-          <span class="pill">.NET / .NET Core</span><span class="pill">FastAPI</span>
-          <span class="pill">Node.js</span><span class="pill">Hangfire</span><span class="pill">Form.io</span>
+          <span class="pill">.NET / .NET Core</span><span class="pill">FastAPI</span><span class="pill">Node.js</span><span class="pill">Hangfire</span><span class="pill">Form.io</span>
         </div>
       </div>
       <div class="skill-category">
-        <div class="skill-cat-label">Cloud & DevOps</div>
+        <div class="skill-cat-label">Cloud &amp; DevOps</div>
         <div class="skill-pills">
-          <span class="pill">AWS Lambda</span><span class="pill">AWS SQS</span>
-          <span class="pill">Step Functions</span><span class="pill">AWS CDK</span>
-          <span class="pill">S3</span><span class="pill">API Gateway</span>
-          <span class="pill">Octopus</span><span class="pill">TeamCity</span>
+          <span class="pill">AWS Lambda</span><span class="pill">AWS SQS</span><span class="pill">Step Functions</span><span class="pill">AWS CDK</span><span class="pill">S3</span><span class="pill">API Gateway</span><span class="pill">Octopus</span><span class="pill">TeamCity</span>
         </div>
       </div>
       <div class="skill-category">
         <div class="skill-cat-label">Databases</div>
         <div class="skill-pills">
-          <span class="pill">MSSQL</span><span class="pill">PostgreSQL</span>
-          <span class="pill">DynamoDB</span><span class="pill">MongoDB</span>
+          <span class="pill">MSSQL</span><span class="pill">PostgreSQL</span><span class="pill">DynamoDB</span><span class="pill">MongoDB</span>
         </div>
       </div>
       <div class="skill-category">
@@ -507,7 +206,6 @@
   </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
   <div class="section-header">
     <span class="section-num">02</span>
@@ -515,53 +213,38 @@
     <div class="divider"></div>
   </div>
   <div class="exp-list">
-
     <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-period">Feb 2024 — Present</div>
+      <div>
+        <div class="exp-period">Feb 2024 &mdash; Present</div>
         <div class="exp-company"><a href="https://www.globallogic.com/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1.5px solid var(--accent);">GlobalLogic</a></div>
-        <div class="exp-location">Bengaluru · Remote</div>
+        <div class="exp-location">Bengaluru &middot; Remote</div>
       </div>
-      <div class="exp-content">
+      <div>
         <div class="exp-role">Software Engineer</div>
-        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1.2rem;line-height:1.7;">
-          Took ownership of the backend for <em>CareInsights</em> — a modernised enterprise healthcare platform — and made it fly. Slashed API response times by <strong style="color:var(--ink);">85–90%</strong> through targeted endpoint optimisation, then architected the CI module from scratch with a schema built for scale. Wired in Datadog observability, streamlined background jobs via Hangfire, and shipped a Form.io integration that gave product teams full control over dynamic questionnaires. Delivered the full legacy-to-modern migration on time.
-        </p>
-        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1.2rem;line-height:1.7;">
-          Designed and led the <strong style="color:var(--ink);">Eligibility Module</strong> — a cloud-native system built on <strong style="color:var(--ink);">AWS Step Functions, SQS, and Lambda</strong> capable of processing <strong style="color:var(--ink);">100K+ concurrent requests</strong>. The architecture follows a producer–consumer pattern where Step Functions orchestrate the eligibility workflow end-to-end, SQS decouples and buffers high-volume requests, and Lambda workers scale on demand. This system is on track to <strong style="color:var(--ink);">replace the existing legacy SSIS architecture</strong>, bringing real-time processing, fault tolerance, and full observability to a previously brittle pipeline.
-        </p>
+        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1.2rem;line-height:1.7;">Took ownership of the backend for <em>CareInsights</em> &mdash; a modernised enterprise healthcare platform &mdash; and made it fly. Slashed API response times by <strong style="color:var(--ink);">85&ndash;90%</strong> through targeted endpoint optimisation, then architected the CI module from scratch with a schema built for scale. Wired in Datadog observability, streamlined background jobs via Hangfire, and shipped a Form.io integration that gave product teams full control over dynamic questionnaires. Delivered the full legacy-to-modern migration on time.</p>
+        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1.2rem;line-height:1.7;">Designed and led the <strong style="color:var(--ink);">Eligibility Module</strong> &mdash; a cloud-native system built on <strong style="color:var(--ink);">AWS Step Functions, SQS, and Lambda</strong> capable of processing <strong style="color:var(--ink);">100K+ concurrent requests</strong>. The architecture follows a producer&ndash;consumer pattern where Step Functions orchestrate the eligibility workflow end-to-end, SQS decouples and buffers high-volume requests, and Lambda workers scale on demand. This system is on track to <strong style="color:var(--ink);">replace the existing legacy SSIS architecture</strong>, bringing real-time processing, fault tolerance, and full observability to a previously brittle pipeline.</p>
         <div class="exp-tags">
-          <span class="tag">.NET</span><span class="tag">C#</span><span class="tag">Python</span>
-          <span class="tag">FastAPI</span><span class="tag">Hangfire</span>
-          <span class="tag">PostgreSQL</span><span class="tag">Angular</span>
-          <span class="tag">Datadog</span><span class="tag">TeamCity</span>
+          <span class="tag">.NET</span><span class="tag">C#</span><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Hangfire</span><span class="tag">PostgreSQL</span><span class="tag">Angular</span><span class="tag">Datadog</span><span class="tag">TeamCity</span>
         </div>
       </div>
     </div>
-
     <div class="exp-item">
-      <div class="exp-meta">
-        <div class="exp-period">Dec 2022 — Feb 2024</div>
+      <div>
+        <div class="exp-period">Dec 2022 &mdash; Feb 2024</div>
         <div class="exp-company"><a href="https://www.hhaexchange.com/" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1.5px solid var(--accent);">HHAeXchange</a></div>
-        <div class="exp-location">Ahmedabad · Remote</div>
+        <div class="exp-location">Ahmedabad &middot; Remote</div>
       </div>
-      <div class="exp-content">
+      <div>
         <div class="exp-role">Associate Software Engineer</div>
-        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1.2rem;line-height:1.7;">
-          Built and shipped production <strong style="color:var(--ink);">.NET / C# microservices</strong> powering an EVV healthcare platform — implementing business logic, stored procedures, and service contracts that kept the system reliable at scale. Modernised the AWS CDK infrastructure layer and upgraded the SDK footprint for better reliability across deployments. Crowned it with a <strong style="color:var(--ink);">28-language multilingual IVR system</strong> built on Twilio, letting healthcare workers submit duty records securely by voice in their native language.
-        </p>
+        <p style="font-size:0.9rem;color:var(--muted);margin-bottom:1.2rem;line-height:1.7;">Built and shipped production <strong style="color:var(--ink);">.NET / C# microservices</strong> powering an EVV healthcare platform &mdash; implementing business logic, stored procedures, and service contracts that kept the system reliable at scale. Modernised the AWS CDK infrastructure layer and upgraded the SDK footprint for better reliability across deployments. Crowned it with a <strong style="color:var(--ink);">28-language multilingual IVR system</strong> built on Twilio, letting healthcare workers submit duty records securely by voice in their native language.</p>
         <div class="exp-tags">
-          <span class="tag">.NET Core</span><span class="tag">TypeScript</span>
-          <span class="tag">Node.js</span><span class="tag">AWS CDK</span>
-          <span class="tag">Twilio</span><span class="tag">MSSQL</span>
+          <span class="tag">.NET Core</span><span class="tag">C#</span><span class="tag">TypeScript</span><span class="tag">Node.js</span><span class="tag">AWS CDK</span><span class="tag">Twilio</span><span class="tag">MSSQL</span>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- PROJECTS -->
 <section id="projects">
   <div class="section-header">
     <span class="section-num">03</span>
@@ -569,45 +252,37 @@
     <div class="divider"></div>
   </div>
   <div class="projects-grid">
-
     <div class="project-card">
       <div class="project-index">01</div>
       <div class="project-title">Eligibility Module</div>
-      <p class="project-desc">Designed and owned an end-to-end eligibility verification system capable of handling <strong style="color:var(--ink);">100K concurrent requests</strong>. Built a producer–consumer pipeline with AWS Step Functions and SQS that turned a manual process into a fully automated, observable workflow.</p>
+      <p class="project-desc">Designed and owned an end-to-end eligibility verification system capable of handling <strong style="color:var(--ink);">100K concurrent requests</strong>. Built a producer-consumer pipeline with AWS Step Functions and SQS that turned a manual process into a fully automated, observable workflow.</p>
       <div class="project-tags">
-        <span class="tag">Python</span><span class="tag">FastAPI</span>
-        <span class="tag">AWS SQS</span><span class="tag">Lambda</span><span class="tag">Step Functions</span>
+        <span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">AWS SQS</span><span class="tag">Lambda</span><span class="tag">Step Functions</span>
       </div>
     </div>
-
     <div class="project-card">
       <div class="project-index">02</div>
       <div class="project-title">Multilingual IVR System</div>
-      <p class="project-desc">Built a voice-first healthcare tool that lets workers clock in and out in <strong style="color:var(--ink);">28 languages</strong> — TTS and pre-recorded. Recordings land in S3, play back in-call, and slot cleanly into existing legacy workflows without a rewrite.</p>
+      <p class="project-desc">Built a voice-first healthcare tool that lets workers clock in and out in <strong style="color:var(--ink);">28 languages</strong> &mdash; TTS and pre-recorded. Recordings land in S3, play back in-call, and slot cleanly into existing legacy workflows without a rewrite.</p>
       <div class="project-tags">
-        <span class="tag">Twilio</span><span class="tag">AWS CDK</span>
-        <span class="tag">AWS S3</span><span class="tag">AWS SDK</span>
+        <span class="tag">Twilio</span><span class="tag">AWS CDK</span><span class="tag">AWS S3</span><span class="tag">AWS SDK</span>
       </div>
     </div>
-
     <div class="project-card">
       <div class="project-index">03</div>
-      <div class="project-title"><a href="https://github.com/KRISHIL-cyber/SCOP" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1.5px solid var(--accent);">SCOP Protein Classifier ↗</a></div>
-      <p class="project-desc">Trained an ML pipeline to classify protein sequences into structural families using evolutionary PSSM profiles from PSI-BLAST. Two-phase feature extraction — Python then R — fed a tuned XGBoost model that punches well above baseline accuracy.</p>
+      <div class="project-title"><a href="https://github.com/KRISHIL-cyber/SCOP" target="_blank" style="color:inherit;text-decoration:none;border-bottom:1.5px solid var(--accent);">SCOP Protein Classifier &#x2197;</a></div>
+      <p class="project-desc">Trained an ML pipeline to classify protein sequences into structural families using evolutionary PSSM profiles from PSI-BLAST. Two-phase feature extraction &mdash; Python then R &mdash; fed a tuned XGBoost model that punches well above baseline accuracy.</p>
       <div class="project-tags">
-        <span class="tag">Python</span><span class="tag">XGBoost</span>
-        <span class="tag">Flask</span><span class="tag">PSI-BLAST</span><span class="tag">R</span>
+        <span class="tag">Python</span><span class="tag">XGBoost</span><span class="tag">Flask</span><span class="tag">PSI-BLAST</span><span class="tag">R</span>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- EDUCATION -->
 <section id="education">
   <div class="section-header">
     <span class="section-num">04</span>
-    <h2>Education & Achievements</h2>
+    <h2>Education &amp; Achievements</h2>
     <div class="divider"></div>
   </div>
   <div class="edu-grid">
@@ -615,34 +290,33 @@
       <div class="edu-card">
         <div class="edu-degree">BTech Computer Engineering</div>
         <div class="edu-uni">Dharmsinh Desai University, Nadiad, Gujarat</div>
-        <div class="edu-meta">July 2019 – May 2023 &nbsp;·&nbsp; CGPA 8.94 / 10</div>
-        <div class="edu-courses">Data Structures · Algorithms · OS · DBMS · Computer Networks · Artificial Intelligence · Machine Learning · Big Data · Image Processing</div>
+        <div class="edu-meta">July 2019 &ndash; May 2023 &nbsp;&middot;&nbsp; CGPA 8.94 / 10</div>
+        <div class="edu-courses">Data Structures &middot; Algorithms &middot; OS &middot; DBMS &middot; Computer Networks &middot; Artificial Intelligence &middot; Machine Learning &middot; Big Data &middot; Image Processing</div>
       </div>
     </div>
     <div>
       <ul class="achievements-list">
         <li class="achievement-item">
-          <span class="ach-icon">★</span>
+          <span class="ach-icon">&#127885;</span>
+          <span class="ach-text"><strong>Microsoft Certified: Azure AI Engineer Associate (AI-102)</strong> &mdash; certified expertise in AI solutions on Azure.</span>
+        </li>
+        <li class="achievement-item">
+          <span class="ach-icon">&#127942;</span>
+          <span class="ach-text">Awarded the <strong>Customer Success &mdash; Forward Thinker Award</strong> for designing and delivering the Eligibility Module, recognised for its innovative cloud-native architecture set to replace legacy SSIS pipelines.</span>
+        </li>
+        <li class="achievement-item">
+          <span class="ach-icon">&#11088;</span>
           <span class="ach-text">Received the <strong>SPOT Award</strong> at GlobalLogic for outstanding contributions to the CareInsights platform revamp.</span>
         </li>
         <li class="achievement-item">
-          <span class="ach-icon">🏆</span>
-          <span class="ach-text">Awarded the <strong>Customer Success — Forward Thinker Award</strong> for designing and delivering the Eligibility Module, recognised for its innovative cloud-native architecture set to replace legacy SSIS pipelines.</span>
-        </li>
-        <li class="achievement-item">
-          <span class="ach-icon">★</span>
-          <span class="ach-text">Qualified <strong>GATE (Computer Science)</strong> in 2022, 2023, and 2025 — three consecutive attempts demonstrating sustained academic excellence.</span>
-        </li>
-        <li class="achievement-item">
-          <span class="ach-icon">🏅</span>
-          <span class="ach-text"><strong>Microsoft Certified: Azure AI Engineer Associate (AI-102)</strong> — certified expertise in AI solutions on Azure.</span>
+          <span class="ach-icon">&#128221;</span>
+          <span class="ach-text">Qualified <strong>GATE (Computer Science)</strong> in 2022, 2023, and 2025 &mdash; three consecutive attempts demonstrating sustained academic excellence.</span>
         </li>
       </ul>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-name">Krishil Patel</div>
   <div class="footer-links">
@@ -652,4 +326,106 @@
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></scri
+<script>
+(function() {
+  var tb = document.getElementById('tb');
+  var seq = [
+    ['cmd', 'whoami'],
+    ['out', 'Krishil Patel -- Software Engineer', 'accent'],
+    ['out', '3 years  .NET  Python  AWS', ''],
+    ['gap'],
+    ['cmd', 'cat stack.json'],
+    ['out', '{', 'blue'],
+    ['out', '  "backend":  [".NET", "C#", "FastAPI"],', 'yellow'],
+    ['out', '  "cloud":    ["Lambda", "SQS", "Step Functions"],', 'yellow'],
+    ['out', '  "database": ["PostgreSQL", "MSSQL", "DynamoDB"],', 'yellow'],
+    ['out', '  "frontend": ["Angular", "TypeScript"]', 'yellow'],
+    ['out', '}', 'blue'],
+    ['gap'],
+    ['cmd', 'echo $MOTTO'],
+    ['out', '// writing code the next dev wont hate', 'accent'],
+    ['out', '// born to refactor. forced to attend standups.', 'accent'],
+    ['gap'],
+    ['end']
+  ];
+
+  var cursor = null;
+  var idx = 0;
+
+  function addCursor(parent) {
+    if (cursor) cursor.remove();
+    cursor = document.createElement('span');
+    cursor.className = 't-cursor';
+    parent.appendChild(cursor);
+  }
+
+  function run() {
+    if (idx >= seq.length) return;
+    var item = seq[idx++];
+    var type = item[0];
+
+    if (type === 'end') {
+      var lastLine = document.createElement('span');
+      lastLine.className = 't-line';
+      var p = document.createElement('span');
+      p.className = 't-prompt';
+      p.textContent = '> ';
+      lastLine.appendChild(p);
+      addCursor(lastLine);
+      tb.appendChild(lastLine);
+      return;
+    }
+
+    if (type === 'gap') {
+      var g = document.createElement('span');
+      g.style.cssText = 'display:block;height:0.5rem';
+      tb.appendChild(g);
+      setTimeout(run, 80);
+      return;
+    }
+
+    if (type === 'out') {
+      if (cursor) cursor.remove();
+      var el = document.createElement('span');
+      el.className = 't-out' + (item[2] ? ' ' + item[2] : '');
+      el.textContent = item[1];
+      tb.appendChild(el);
+      setTimeout(run, 70);
+      return;
+    }
+
+    if (type === 'cmd') {
+      if (cursor) cursor.remove();
+      var line = document.createElement('span');
+      line.className = 't-line';
+      var prompt = document.createElement('span');
+      prompt.className = 't-prompt';
+      prompt.textContent = '> ';
+      var cmd = document.createElement('span');
+      cmd.className = 't-cmd';
+      line.appendChild(prompt);
+      line.appendChild(cmd);
+      addCursor(line);
+      tb.appendChild(line);
+
+      if (!item[1]) { setTimeout(run, 300); return; }
+
+      var ci = 0;
+      var text = item[1];
+      function typeChar() {
+        if (ci < text.length) {
+          cmd.textContent += text[ci++];
+          setTimeout(typeChar, 50);
+        } else {
+          setTimeout(run, 200);
+        }
+      }
+      setTimeout(typeChar, 250);
+    }
+  }
+
+  setTimeout(run, 800);
+})();
+</script>
+</body>
+</html>
